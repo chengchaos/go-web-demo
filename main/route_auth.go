@@ -1,20 +1,20 @@
 package main
 
+import (
+	"net/http"
 
-import "net/http"
+	"github.com/chengchaos/go-web-demo/data"
+)
 
-
-
-
-func authenticate(w http.RequestWriter, r *http.Request) {
+func authenticate(w http.ResponseWriter, r *http.Request) {
 	uesr, _ := data.UserByEmail(r.PostFormValue("email"))
 
-	if user.Password == data.Encrypt(r.PostFormValue("password")) {
-		session := user.CreateSession()
+	if uesr.Password == data.Encrypt(r.PostFormValue("password")) {
+		session := uesr.CreateSession()
 		cookie := http.Cookie{
-			Name: "_cookie",
-			Value : session.Uuid,
-			HttpOnly : true,
+			Name:     "_cookie",
+			Value:    session.Uuid,
+			HttpOnly: true,
 		}
 		http.SetCookie(w, &cookie)
 		http.Redirect(w, r, "/", 302)

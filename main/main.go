@@ -3,7 +3,7 @@ package main
 
 import "fmt"
 import "net/http"
-import "github.com/chengchaos/go-web-demo/data"
+//import "github.com/chengchaos/go-web-demo/data"
 
 func handler(writer http.ResponseWriter, request *http.Request) {
 

@@ -5,5 +5,5 @@ type Session struct {
 	Uuid string
 	Email string
 	UserId int
-	CreateAt time.Time
+	//CreateAt time.Time
 }
